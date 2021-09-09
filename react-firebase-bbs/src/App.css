@@ -1,0 +1,69 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #152d5c;
+  min-height: 30vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  text-shadow: 2px 2px 2px gray;
+}
+
+div.main_nav {
+  display: flex;
+
+  padding: 9px;
+  background-color: rgb(101, 25, 155);
+}
+
+div.main_nav div {
+  margin-left: 10px;
+  font-size: 15px;
+  color: white;
+}
+
+div.main_nav div:hover {
+  background-color: rgb(153, 255, 127);
+  text-shadow: 2px 2px 2px black;
+}
+
+table.bbsMain {
+  width: 80%;
+  margin: 5px auto;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+table.bbsMain tr:nth-of-type(odd) {
+  background-color: #ddd;
+}
+
+table.bbsMain tr:nth-of-type(even) {
+  background-color: #eee;
+}
+
+table.bbsMain th,
+table.bbsMain td {
+  padding: 8px;
+  cursor: pointer;
+}
+
+table.bbsMain tr:last-child {
+  font-weight: bold;
+  color: cornflowerblue;
+}
+
+table.bbsMain tr.comp {
+  text-decoration-line: line-through;
+}
