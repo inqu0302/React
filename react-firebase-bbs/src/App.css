@@ -20,22 +20,23 @@
   text-shadow: 2px 2px 2px gray;
 }
 
-div.main_nav {
+ul.main_menu {
   display: flex;
-
-  padding: 9px;
-  background-color: rgb(101, 25, 155);
-}
-
-div.main_nav div {
-  margin-left: 10px;
-  font-size: 15px;
+  background-color: #343461;
   color: white;
+  list-style: none;
 }
 
-div.main_nav div:hover {
-  background-color: rgb(153, 255, 127);
-  text-shadow: 2px 2px 2px black;
+ul.main_menu a {
+  display: inline-block;
+  color: inherit;
+  padding: 1rem;
+  text-decoration: none;
+  margin-left: 20px;
+}
+
+ul.main_menu a:hover {
+  background-color: lightskyblue;
 }
 
 table.bbsMain {
