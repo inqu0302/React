@@ -8,3 +8,5 @@ const firebaseConfig = {
   appId: "1:1035240369616:web:76de74c8bb36e6e6a79dd5",
   measurementId: "G-LRZK7WXVJF",
 };
+
+// 테스트
