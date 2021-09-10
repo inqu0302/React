@@ -58,7 +58,7 @@ function BBsMain() {
 
           // write URL 에 id 값을 가지고 redirect를 수행
           // push == redirect
-          router.push(`/detail/${id}`);
+          router.push(`/write/${id}`);
         }}
       >
         <td>{bbs.b_date}</td>

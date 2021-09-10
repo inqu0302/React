@@ -1,17 +1,10 @@
 import "./App.css";
 
-import {
-  MainNav,
-  BBsMain,
-  Header,
-  Footer,
-  BBsWrite,
-  BBsDetail,
-} from "./comps/index";
+import { MainNav, BBsMain, Header, Footer, BBsWrite } from "./comps/index";
 
 // BrowserRouter는 리액터에서 제공하는 기능명
 // as 를 사용해서 변수명을 바꿔줄수 있다
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 function App() {
   return (
     <Router>
@@ -21,8 +14,10 @@ function App() {
         </header>
         <MainNav />
         <Route path="/" component={BBsMain} exact />
-        <Route path="/detail/:id" component={BBsDetail} exact />
-        <Route path="/write" component={BBsWrite} exact />
+        <Switch>
+          <Route path="/write" component={BBsWrite} exact />
+          <Route path="/write/:id" component={BBsWrite} exact />
+        </Switch>
         <section className="main_section"></section>
       </div>
       <Footer />

@@ -112,27 +112,3 @@ div.bbsWrite button:hover {
 div.bbsWrite input:focus {
   background-color: #eee;
 }
-
-div.detail {
-  display: flex;
-  list-style: none;
-  margin: 10px auto;
-}
-
-div.detail div {
-  flex: 1;
-  margin: 10px auto;
-  background-color: #eee;
-}
-
-div.detail li {
-  border-bottom: 2px solid #aaa;
-}
-
-div.detail_head {
-  width: 80%;
-}
-
-div.detail_content {
-  width: 80%;
-}
