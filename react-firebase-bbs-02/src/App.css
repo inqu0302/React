@@ -69,11 +69,6 @@ table.bbsMain td {
   cursor: pointer;
 }
 
-table.bbsMain tr:last-child {
-  font-weight: bold;
-  color: cornflowerblue;
-}
-
 table.bbsMain tr.comp {
   text-decoration-line: line-through;
 }
@@ -104,11 +99,66 @@ div.bbsWrite button {
   width: 80%;
 }
 
-div.bbsWrite button:hover {
+div.bbsWrite input:focus {
+  background-color: #eee;
+}
+
+button:hover {
   box-shadow: #fff;
   background-color: green;
 }
 
-div.bbsWrite input:focus {
+div.bbs_detail {
+  width: 90vw;
+  margin: 10px auto;
+}
+
+div.bbs_detail label,
+div.bbs_detail span {
+  display: inline-block;
+  margin: 0;
+  padding: 8px;
+}
+
+div.bbs_detail label {
+  width: 30%;
+  background-color: #ddd;
+  text-align: right;
+  color: blue;
+  font-weight: bold;
+}
+
+div.bbs_detail span {
+  width: 60%;
   background-color: #eee;
+  text-align: left;
+}
+
+div.bbs_btn_box {
+  width: 90%;
+  text-align: right;
+  padding: 8px;
+  margin: 5px auto;
+}
+
+div.bbs_btn_box button {
+  padding: 10px 15px;
+  margin: 5px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: white;
+  border-radius: 10px;
+}
+
+div.bbs_btn_box button:nth-of-type(1) {
+  background-color: teal;
+}
+
+div.bbs_btn_box button:nth-of-type(2) {
+  background-color: rgb(0, 128, 64);
+}
+
+div.bbs_btn_box button:nth-of-type(3) {
+  background-color: rgb(128, 0, 79);
 }

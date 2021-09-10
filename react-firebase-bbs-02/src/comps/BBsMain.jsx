@@ -45,6 +45,7 @@ function BBsMain() {
     });
     setBBsData(bbsList);
   };
+
   useEffect(firebaseFetch, []);
 
   const bbsBody = bbsData.map((bbs) => {
@@ -56,9 +57,9 @@ function BBsMain() {
           const id = e.target.closest("TR").dataset.id;
           //   alert("클릭" + id);
 
-          // write URL 에 id 값을 가지고 redirect를 수행
+          // detail URL 에 id 값을 가지고 redirect를 수행
           // push == redirect
-          router.push(`/write/${id}`);
+          router.push(`/detail/${id}`);
         }}
       >
         <td>{bbs.b_date}</td>

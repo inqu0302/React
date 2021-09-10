@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 
 import {} from "firebase";
 import moment from "moment";
@@ -39,14 +39,14 @@ function BBsWrite() {
     b_date: "",
     b_time: "",
   });
-  const findByFetch = async () => {
+  const findByFetch = useCallback(async () => {
     if (docId) {
       const result = await firestore.collection("bbs").doc(docId).get();
       setBBs(result.data());
     }
-  };
+  }, [docId]);
 
-  useEffect(findByFetch, []);
+  useEffect(findByFetch, [findByFetch]);
 
   // onCahnge event 핸들러
   // 키보드로 입력한 데이터를 bbs 객체에 setting 하는 일을 수행
