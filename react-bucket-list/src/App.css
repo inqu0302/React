@@ -1,0 +1,39 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+div.header {
+  background-color: #282c34;
+  min-height: 20vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+div.bucket_main {
+  width: 90%;
+  margin: 10px auto;
+}
+
+div.bucket_main input,
+div.bucket_main table {
+  width: 100%;
+  margin: 5px auto;
+}
+
+div.bucket_main table {
+  border: 1px solid #282c34;
+  border-spacing: 0;
+}
+
+div.footer {
+  background-color: #282c34;
+  text-align: center;
+  color: aliceblue;
+  padding: 10px;
+}
