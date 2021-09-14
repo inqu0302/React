@@ -25,6 +25,7 @@ const Schema = mongoose.Schema;
 // mongoDb의 schema(테이블 속성)지정
 const bucket = Schema({
   b_id: String,
+  b_flag: Number,
   b_start_date: String,
   b_title: String,
   b_end_date: String,

@@ -1,5 +1,6 @@
 # API KEY
 BBSConfig.js
+mongoConfig.json
 
 # Logs
 logs

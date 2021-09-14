@@ -1,29 +1,24 @@
 import React from "react";
+import BucketInput from "./BucketInput";
+import BucketList from "./BucketList";
 
 function BucketMain() {
+  const [bucketList, setbucketList] = useState([
+    {
+      b_id: 0,
+      b_flag: 0,
+      b_start_date: "2021-09-13",
+      b_title: "리액트 정복",
+      b_end_date: "",
+      b_end_check: false,
+      b_cancle: false,
+    },
+  ]);
   return (
-    <div className="bucket_main">
-      <input
-        className="input"
-        type="text"
-        placeholder="하고싶은 일을 입력해주세요"
-      ></input>
-      <table className="bucket_list">
-        <tr>
-          <th>FLAG</th>
-          <th>날짜</th>
-          <th>BUCKET</th>
-          <th>완료</th>
-          <th>취소</th>
-        </tr>
-        <tr>
-          <td>샘플</td>
-          <td>샘플</td>
-          <td>샘플</td>
-          <td>샘플</td>
-          <td>샘플</td>
-        </tr>
-      </table>
+    <div classname="w3-container-fluid">
+      <BucketInput />
+      {/* BuckList 컴포넌트에 bucketList 상태(변수) 전달하기 */}
+      <BucketList bucketList={bucketList} />
     </div>
   );
 }

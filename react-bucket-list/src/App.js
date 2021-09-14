@@ -1,12 +1,13 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { BucketMain, Header, Footer } from "./comps/index";
 
 function App() {
   return (
     <div className="App">
-      <Header />
-      <BucketMain />
+      <section className="w3- container w3-margin">
+        <Header />
+        <BucketMain />
+      </section>
       <Footer />
     </div>
   );

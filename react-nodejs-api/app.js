@@ -5,7 +5,13 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const cors = require("cors");
 const mongoose = require("mongoose");
-
+/**
+ * CROSS ORIGIN RESOURCE SHARE
+ * 서로 다른 서버간에 데이터를 주고받을때 보안 문제로 인해
+ * 발생할 수 있는 ISSUE
+ *
+ * XSS 공격
+ */
 // db가 작동되는 것을 모니터링을 하기 위한
 // event 핸들러 등록
 const dbConn = mongoose.connection;
@@ -27,7 +33,18 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 
 var app = express();
-app.use(cors());
+
+// cors를 허용할 origin list 만들기
+const whiteList = ["http://localhost:5000", "http://localhost:3000"];
+const corsOption = {
+  origin: (origin, callback) => {
+    // whiteList중에 origin(요청주소)이 있으면
+    const isWhiteList = whiteList.indexOf(origin) !== -1;
+    callback(null, isWhiteList);
+  },
+  credentials: true,
+};
+app.use(cors(corsOption));
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
