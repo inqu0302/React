@@ -3,12 +3,57 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+const cors = require("cors");
+
+const { USERID, PASSWORD } = require("./config/mongoConfig");
+const atlasURL = `mongodb+srv://${USERID}:${PASSWORD}@cluster0.fjfsc.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
+
+const mongoose = require("mongoose");
+const dbConn = mongoose.connection;
+
+// 정상적으로 연결되었을때 실행되는 event 핸들러
+// 최초에 연결이 성공했을때 한번만(once) 작동되도록 수행
+dbConn.once("open", () => {
+  console.log("MongoDB Open OK");
+});
+
+// 작동되는 과정에 오류가 발생하면 console에 오류메시지를 보여주기
+dbConn.on("error", () => {
+  console.error;
+});
+// Atlas 서버 이용
+mongoose.connect(atlasURL);
+// localDB 이용
+// mongoose.connect("mongodb://localhost:27017/mydb");
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 const apiRouter = require("./routes/apiRouter");
 
-var app = express();
+const app = express();
+// XSS 해킹을 방지하기 위하여 지금의 모든 HTTP 프로토콜에서는
+// 기본적으로 CORS(CROSS ORIGIN RESOURCE SHARE) 를 금지하고 있다
+// API 서버를 구축할때는 필수적으로 CORS를 허용해 주어야 한다.
+// Nodejs에서는 cors import하여 단순 설정만 하여도 CORS를 허용할 수 있다
+// 필요한 곳만 CORS를 허용하도록 설정을 해 주어야 한다
+
+// 허용할 접속 주소(URL) 설정하기 위한 허용 주소록 만들기
+const whiteURL = ["http://localhost:3000"];
+
+// cors에 제공할 옵션 데이터 만들기
+// API를 요청한 URL(origin)이 whiteURL에 담겨있는가?
+// 배열.indexOf(문자열)
+// 이 함수는 문자열 배열중에 문자열에 해당하는 값이 있으면
+// -1 이 아닌 값을 return 하는 함수
+// 해당 값이 없으면 -1을 return 한다
+const corsOption = {
+  origin: (origin, callback) => {
+    const isWhiteURL = whiteURL.indexOf(origin) !== 1;
+    callback(null, isWhiteURL);
+  },
+  Credentials: true,
+};
+app.use(cors(corsOption));
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));

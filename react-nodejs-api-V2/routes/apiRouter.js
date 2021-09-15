@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
+const BUCKET = require("../models/bucket");
+
 /**
  * RESTful
  * 클라이언트에서 요청을 할때 할일을 프로토콜 method로 분리하기
@@ -35,45 +37,51 @@ const router = express.Router();
  * 		router.delete("/book/delete")
  */
 
-const retData = [
-  {
-    b_id: "0001",
-    b_title: "반갑습니다",
-    b_start_date: "2021-09-15",
-    b_end_date: "",
-    b_end_check: false,
-    b_cancle: false,
-  },
-  {
-    b_id: "0002",
-    b_title: "안녕하세요",
-    b_start_date: "2021-09-15",
-    b_end_date: "",
-    b_end_check: false,
-    b_cancle: false,
-  },
-];
-
 /**
  * POST로 받는 데이터는 주로 form에 담긴 데이터
  * API Server에서는 fetch() 를 통하여 데이터를 전달받을때도 사용한다
  * request의 body에 담겨서 전달되기 때문에 req.body에서 데이터를 추출
  */
-router.post("/bucket", (req, res) => {
+router.post("/bucket", async (req, res) => {
   const body = req.body;
-  console.log("데이터 추가하기");
+  const result = await BUCKET.create(body);
+  console.log("데이터 추가하기", result);
   console.log(body);
-  res.send("끝");
+  res.json({ result: "OK" });
 });
 
-router.put("/bucket", (req, res) => {
+router.put("/bucket", async (req, res) => {
   const body = req.body;
-  console.log("데이터 업데이트 하기");
+  await BUCKET.findOneAndUpdate({ b_id: body.b_id }, body);
+  res.json({ result: "OK" });
 });
 
-router.get("/get", (req, res) => {
+/**
+ * 3 Tier(3layer App)
+ * react -> node -> atlas
+ * atlas -> node -> react
+ * findOne() 이 return 하는 doc 가 성능상 문제로 인하여 overwrite()가
+ * null 값으로 오류가 발생하게됨
+ */
+
+// router.put("/bucket/over", async (req, res) => {
+//   const body = req.body;
+//   // DB에서 b_id 값이 body.b_id와 같은 데이터를 SELECT 하기
+//   const doc = await BUCKET.findOne({ b_id: body.b_id });
+//   // doc = {...doc, b_id : body.b_id, b_title : body.b_title}
+//   // select한 model 객체의 모든 요소 데이터를 body로 받은 데이터로 변경하라
+//   await doc.overwrite(body);
+//   // 변경된 데이터를 DB에 update
+//   await doc.save();
+
+//   await console.log("데이터 업데이트 하기");
+//   await console.table(body);
+// });
+
+router.get("/get", async (req, res) => {
+  const buckets = await BUCKET.find({});
   console.log("전체 리스트 요청하기");
-  res.json(retData);
+  res.json(buckets);
 });
 
 router.get("/get/:id", (req, res) => {
@@ -101,7 +109,7 @@ router.get("/update/:id/:title", (req, res) => {
 
 router.put("/update", (req, res) => {});
 
-router.delete("/cancle/:id", (req, res) => {
+router.delete("/cancel/:id", (req, res) => {
   const id = req.params.id;
   console.log("수신된 데이터", id);
 
