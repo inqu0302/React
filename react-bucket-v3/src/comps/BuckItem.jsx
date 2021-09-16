@@ -32,6 +32,7 @@ function BuckItem({ args, bucket }) {
       } else if (className.includes("b_end_date")) {
         // 완료를 클릭하면
         // 현재 날짜, 시간을 표시하여 완료되었음을 나타내기
+
         bucket_complet(b_id);
       }
     }
@@ -49,7 +50,7 @@ function BuckItem({ args, bucket }) {
 
       // b_id와 b_title을 BucketMain으로 보내서 update수행하기
       bucket_update(b_id, b_title);
-    } else if (e.keyCode == 27) {
+    } else if (e.keyCode === 27) {
       setB_Update({ ...b_update, isEdit: false });
     }
   };
