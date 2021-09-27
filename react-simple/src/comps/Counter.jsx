@@ -1,13 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 
-function Counter() {
+const Counter = () => {
+  const [count, setCount] = useState(0);
+
+  const plus = (e) => {
+    setCount(count + 1);
+  };
+
+  const minus = (e) => {
+    setCount(count - 1);
+  };
   return (
     <div>
-      <div>카운트 : 0</div>
-      <button class-name="plus">증가</button>
-      <button class-name="minus">감소</button>
+      <div>카운트 : {count}</div>
+      <button class-name="plus" onClick={plus}>
+        증가
+      </button>
+      <button class-name="minus" onClick={minus}>
+        감소
+      </button>
     </div>
   );
-}
+};
 
 export default Counter;
