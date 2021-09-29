@@ -3,7 +3,7 @@
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 15vmin;
   pointer-events: none;
 }
 
@@ -15,7 +15,7 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 30vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,19 +35,4 @@
   to {
     transform: rotate(360deg);
   }
-}
-
-div.input_form label,
-div.input_form input {
-  display: inline-block;
-  width: 40%;
-}
-
-div.input_form label {
-  text-align: right;
-}
-
-table.addr_list {
-  width: 70%;
-  margin: 10px auto;
 }

@@ -4,6 +4,8 @@ import { useState } from "react";
 import "./App.css";
 
 function App() {
+  const [addrList, setAddrList] = useState([]);
+
   const [address, setAddress] = useState({
     u_name: "",
     u_addr: "",
@@ -13,8 +15,13 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <AddressInput address={address} setAddress={setAddress} />
-        <AddressView address={address} />
+        <AddressInput
+          address={address}
+          setAddress={setAddress}
+          addrList={addrList}
+          setAddrList={setAddrList}
+        />
+        <AddressView addrList={addrList} />
       </header>
     </div>
   );
