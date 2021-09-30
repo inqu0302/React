@@ -1,8 +1,9 @@
-import React from "react";
+import "../css/BookList.css";
+import BookItem from "./BookItem";
 
 function BookList() {
   return (
-    <table>
+    <table className="book_list">
       <thead>
         <tr>
           <th>ID</th>
@@ -10,6 +11,9 @@ function BookList() {
           <th>장르</th>
         </tr>
       </thead>
+      <tbody>
+        <BookItem />
+      </tbody>
     </table>
   );
 }

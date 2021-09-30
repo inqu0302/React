@@ -1,8 +1,9 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import BookInput from "./BookInput";
+import BookList from "./BookList";
 import { useState } from "react";
-import BookContext from "../context/BookContext";
+import UUID from "react-uuid";
 
 /**
  * 컴포넌트의 선택적 Rendering
@@ -11,11 +12,21 @@ import BookContext from "../context/BookContext";
  */
 function BookMain() {
   const [book, setBook] = useState({
+    b_id: UUID(),
     b_name: "리액터",
     b_genre: "IT",
   });
 
-  const providerData = { book, setBook };
+  const [bookList, setBookList] = useState([]);
+
+  // 상위 컴포넌트에서 이벤트를 생성하고 하위 컴포넌트로 전달할때는
+  // 반드시 e(event) 매개변수를 포함하는것이 좋다
+  const onClick = (e) => {
+    alert("onClick");
+  };
+
+  // 데이터 종류에 관계없이 함수도 같이 전송가능
+  const providerData = { book, setBook, bookList, setBookList, onClick };
   /**
    * 가장 바깥쪽 tag 는 이름을 지워도 상관없음
    */
@@ -29,7 +40,7 @@ function BookMain() {
           <BookInput />
         </Route>
         <Route path="/list" exact>
-          여기는 list 화면
+          <BookList />
         </Route>
       </BookContext.Provider>
     </>

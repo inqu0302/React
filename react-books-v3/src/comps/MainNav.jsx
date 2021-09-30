@@ -1,14 +1,23 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
+import "../css/MainNav.css";
 
+/**
+ * navigation 모양을 디자인한 컨포넌트
+ */
 function MainNav() {
   return (
-    <div className="Navi">
-      <ul>
-        <li>Home</li>
-        <li>Insert</li>
-        <li>List</li>
-      </ul>
-    </div>
+    <nav className="main_nav">
+      <NavLink to="/" exact>
+        Home
+      </NavLink>
+      <NavLink to="/insert" exact>
+        Insert
+      </NavLink>
+      <NavLink to="/list" exact>
+        List View
+      </NavLink>
+    </nav>
   );
 }
 

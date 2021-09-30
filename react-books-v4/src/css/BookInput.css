@@ -1,0 +1,31 @@
+div.book_input {
+  border: 1px solid gainsboro;
+  margin: 10px auto;
+  padding: 10px;
+  width: 80%;
+}
+
+div.book_input div {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}
+
+div.book_input label {
+  display: inline-block;
+  width: 20%;
+  margin: 10px;
+  text-align: right;
+}
+
+div.book_input input {
+  width: 50%;
+}
+
+div.book_input button {
+  background-color: darkblue;
+  padding: 10px;
+  margin: 10px auto;
+  color: white;
+  border-radius: 5px;
+}
