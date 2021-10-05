@@ -1,0 +1,39 @@
+div.input_box {
+  width: 80%;
+  margin: 10px auto;
+  padding: 20px;
+}
+
+div.input_box input {
+  width: 70%;
+  height: 30px;
+  margin: 0 0 10px;
+  border: none;
+  background-color: #eee;
+  border-radius: 5px;
+  padding: 5px 40px 5px 10px;
+}
+
+div.input_box input:hover {
+  box-shadow: 2px 2px 2px #aaa;
+}
+
+div.input_box button {
+  font-size: 17px;
+  display: block;
+  width: 70%;
+
+  margin: 3px auto;
+  padding: 12px;
+  color: rgb(57, 56, 58);
+
+  background-color: wheat;
+  border: none;
+  border-radius: 8px;
+}
+
+div.input_box button:hover {
+  cursor: pointer;
+  font-style: bold;
+  box-shadow: 3px 3px 3px #aaa;
+}

@@ -1,7 +1,8 @@
-import React from "react";
+import UUID from "react-uuid";
+import "../css/AddressInput.css";
 
-function AddressInput(props, { stateGroup }) {
-  // const {stateGroup} = props
+function AddressInput({ stateGroup }) {
+  // const { stateGroup } = props;
   const { address, setAddress, addrBook, setAddrBook } = stateGroup;
 
   const onChangeHandler = (e) => {
@@ -10,15 +11,53 @@ function AddressInput(props, { stateGroup }) {
   };
 
   const addrBookInsert = () => {
+    if (!address.a_name) {
+      alert("이름을 입력해주세요");
+      return;
+    }
+    if (!address.a_addr) {
+      alert("주소를 입력해주세요");
+      return;
+    }
+    if (!address.a_tel) {
+      alert("전화번호를 입력해주세요");
+      return;
+    }
+    if (!address.a_age) {
+      alert("나이를 입력해주세요");
+      return;
+    }
+    setAddress({ ...address, a_id: UUID() });
     setAddrBook([...addrBook, address]);
   };
+
   return (
-    <div>
-      <input type="text" onChange={onChangeHandler} placeholder="이름" />
-      <input type="text" onChange={onChangeHandler} placeholder="주소" />
-      <input type="text" onChange={onChangeHandler} placeholder="전화번호" />
-      <input type="text" onChange={onChangeHandler} placeholder="나이" />
-      <button onClick={addrBookInsert}>추가</button>
+    <div className="input_box">
+      <input
+        value={address.a_name}
+        name="a_name"
+        placeholder="이름을 입력해주세요"
+        onChange={onChangeHandler}
+      />
+      <input
+        value={address.a_addr}
+        name="a_addr"
+        placeholder="주소를 입력해주세요"
+        onChange={onChangeHandler}
+      />
+      <input
+        value={address.a_tel}
+        name="a_tel"
+        placeholder="전화번호를 입력해주세요"
+        onChange={onChangeHandler}
+      />
+      <input
+        value={address.a_age}
+        name="a_age"
+        placeholder="나이를 입력해주세요"
+        onChange={onChangeHandler}
+      />
+      <button onClick={addrBookInsert}>주소 추가하기</button>
     </div>
   );
 }

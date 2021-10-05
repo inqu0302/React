@@ -1,0 +1,29 @@
+table {
+  margin: 5px auto;
+  width: 70%;
+  padding: 20px;
+  border-spacing: 0;
+  font-size: 17px;
+}
+
+table thead th {
+  background-color: rgb(218, 170, 83);
+  font-weight: bold;
+  border-bottom: 2px solid #bbb;
+  padding: 10px;
+}
+
+table tbody tr {
+  background-color: rgb(255, 235, 197);
+}
+
+table tbody td {
+  padding: 10px;
+}
+
+table tbody tr:hover {
+  cursor: pointer;
+  background-color: rgb(161, 128, 65);
+  font-weight: bold;
+  color: white;
+}

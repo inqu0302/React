@@ -1,12 +1,12 @@
 import React from "react";
-
+import "../css/AddressList.css";
 // 비구조화
-// const {addrBook} = props 대신 직접 받기
+// const {addrBook} = props대신 직접 분해하면서 받기
 function AddressList({ addrBook }) {
-  const viewList = addrBook.map((addr) => {
+  const viewList = addrBook.map((addr, index) => {
     return (
-      <tr dey={addr.a_id}>
-        <td>{addr.a_id}</td>
+      <tr key={addr.a_id}>
+        <td>{index + 1}</td>
         <td>{addr.a_name}</td>
         <td>{addr.a_addr}</td>
         <td>{addr.a_tel}</td>
