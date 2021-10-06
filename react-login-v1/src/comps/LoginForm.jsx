@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import "../css/LoginForm.css";
+import { useUserContext } from "../context/UserContextProvider";
 
 function LoginForm() {
+  const { setUser } = useUserContext();
   const [account, setAccount] = useState({
     userid: "",
     password: "",
@@ -24,8 +26,9 @@ function LoginForm() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "http://localhost:3000",
       },
-      //   credentials: "same-origin",
+      credentials: "include",
       body: JSON.stringify({
         userid: account.userid,
         password: account.password,
@@ -39,24 +42,31 @@ function LoginForm() {
     // ES6+ 버전에서 safe null 검사를 수행하는 코드가 있다
     // if(res?.ok)
     // res가 정상적(null, undefined가 아니면)으로 출력이 되면 ok속성을 검사
+    console.log("res", res);
+    if (res.status === 401) {
+      alert("ID 또는 비밀번호 를 확인하세요");
+    }
     if (res?.ok) {
-      const user = await res.json();
-      console.log("userid", account.userid);
-      //   const user = users.find((item) => item.userid === account.userid);
-      console.log("user", user);
+      const resultUser = await res.json();
+      console.log("user", account.userid);
 
-      if (!user) {
-        alert("아이디가 없음");
+      //   const user = users.find((item) => item.userid === account.userid);
+      console.log("user", resultUser);
+
+      if (!resultUser?.userid) {
+        alert("없는 ID 입니다");
         return;
       }
 
-      if (user.password !== account.password) {
-        alert("비번오류");
+      if (resultUser.password !== account.password) {
+        alert("비밀번호가 틀렸습니다");
         return;
       }
       alert("로그인 성공");
+      setUser(resultUser);
     }
   };
+
   return (
     <div className="login_form">
       <input

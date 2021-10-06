@@ -1,40 +1,59 @@
-import React, { useState } from "react";
 import "../css/JoinForm.css";
+import React, { useState } from "react";
 
 function JoinForm() {
-  const [account, setAccount] = useState({
+  const [joinUser, setJoinUser] = useState({
     userid: "",
     password: "",
     re_password: "",
-    eMail: "",
+    email: "",
   });
 
   const onChange = (e) => {
-    setAccount({ ...account, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setJoinUser({ ...joinUser, [name]: value });
   };
 
-  const onJoin = (e) => {
-    if (!account.userid) {
+  const onJoin = async (e) => {
+    if (!joinUser?.userid) {
       alert("ID를 입력하세요");
       return;
     }
-    if (!account.password) {
+    if (!joinUser?.password) {
       alert("비밀번호를 입력하세요");
       return;
     }
-    if (!account.re_password) {
+    if (!joinUser?.re_password) {
       alert("비밀번호를 한번 더 입력하세요");
       return;
     }
-    if (!account.eMail) {
+    if (!joinUser?.e_mail) {
       alert("E-mail을 입력하세요");
       return;
     }
-    if (account.password !== account.re_password) {
+    if (joinUser.password !== joinUser.re_password) {
       alert("비밀번호를 확인해 주세요");
       return;
     }
-    alert("회원가입 문제없음");
+
+    const joinData = {
+      userid: joinUser.userid,
+      password: joinUser.password,
+      email: joinUser.email,
+    };
+
+    const response = await fetch("http://localhost:8080/users/join", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(joinData),
+    });
+
+    if (response.ok) {
+      const json = await response.json();
+      alert(JSON.stringify(json));
+    }
   };
 
   return (
@@ -57,7 +76,7 @@ function JoinForm() {
         placeholder="비밀번호를 한번 더 입력해 주세요"
       />
       <input
-        name="eMail"
+        name="e_mail"
         onChange={onChange}
         type="E-mail"
         placeholder="E-mail을 입력해 주세요"

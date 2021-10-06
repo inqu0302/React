@@ -1,0 +1,36 @@
+import React, { useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import { useUserContext } from "../context/UserContextProvider";
+
+function Bbs() {
+  const { user, setUser } = useUserContext();
+  const history = useHistory();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch("http://localhost:8080/users", {
+        method: "POST",
+        header: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "http://localhost:3000",
+        },
+        credentails: "include",
+      });
+      const result = await res.json();
+      console.log(result);
+      await setUser(result);
+    };
+    fetchData();
+  }, []);
+
+  if (!user.userid) {
+    history.replace("/login");
+  }
+  return (
+    <div>
+      <h1>자유게시판</h1>
+    </div>
+  );
+}
+
+export default Bbs;
