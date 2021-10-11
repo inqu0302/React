@@ -1,11 +1,14 @@
+import React from "react";
 import MainNav from "./MainNav";
 import LoginForm from "./LoginForm";
 import JoinForm from "./JoinForm";
 import Notice from "./Notice";
-import Bbs from "./Bbs";
+import BBs from "./BBs";
 import Logout from "./Logout";
-import Admin from "./Admin";
 import { Route } from "react-router-dom";
+import Admin from "./Admin";
+import AuthRoute from "./AuthRoute";
+
 import { useUserContext } from "../context/UserContextProvider";
 
 function MainComp() {
@@ -21,7 +24,7 @@ function MainComp() {
     user?.userid
       ? { id: 4, title: "마이페이지", link: "/mypage" }
       : { id: 4, title: "회원가입", link: "/join" },
-    { id: 5, title: "게시판관리", link: "/admin" },
+    { id: 5, title: "회원정보보기", link: "/admin" },
   ];
 
   return (
@@ -29,23 +32,30 @@ function MainComp() {
       <Route path="/" exact>
         <div>홈화면</div>
       </Route>
+
       <Route path="/notice" exact>
-        <Notice />
+        <AuthRoute>
+          <Notice />
+        </AuthRoute>
       </Route>
       <Route path="/bbs" exact>
-        <Bbs />
+        <AuthRoute>
+          <BBs />
+        </AuthRoute>
       </Route>
       <Route path="/login" exact>
         <LoginForm />
       </Route>
-      <Route path="/join" exact>
+      <Route path="/join">
         <JoinForm />
       </Route>
       <Route path="/logout" exact>
         <Logout />
       </Route>
       <Route path="/admin" exact>
-        <Admin />
+        <AuthRoute>
+          <Admin role={user.role} />
+        </AuthRoute>
       </Route>
     </MainNav>
   );

@@ -29,7 +29,7 @@ function AppContextProvider({ children }) {
   // TODO 정보 1개를 보관할 state
   const [todo, setTodo] = useState({
     t_id: 0,
-    t_text: "리액트",
+    t_text: "",
     t_comp: false,
   });
 

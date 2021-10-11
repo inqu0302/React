@@ -1,10 +1,11 @@
+import React from "react";
 import MainNav from "./MainNav";
 import LoginForm from "./LoginForm";
 import JoinForm from "./JoinForm";
-import Notice from "./Notice";
-import Bbs from "./Bbs";
 import Logout from "./Logout";
-import Admin from "./Admin";
+import TodoComp from "./TodoComp";
+import AuthRoute from "./AuthRoute";
+
 import { Route } from "react-router-dom";
 import { useUserContext } from "../context/UserContextProvider";
 
@@ -13,27 +14,24 @@ function MainComp() {
 
   const NavList = [
     { id: 0, title: "Home", link: "/" },
-    { id: 1, title: "공지사항", link: "/notice" },
-    { id: 2, title: "자유게시판", link: "/bbs" },
+    { id: 1, title: "List", link: "/list" },
     user?.userid
       ? { id: 3, title: "로그아웃", link: "/logout", align: true }
       : { id: 3, title: "로그인", link: "/login", align: true },
     user?.userid
       ? { id: 4, title: "마이페이지", link: "/mypage" }
       : { id: 4, title: "회원가입", link: "/join" },
-    { id: 5, title: "게시판관리", link: "/admin" },
   ];
 
   return (
     <MainNav NavList={NavList}>
       <Route path="/" exact>
-        <div>홈화면</div>
+        <div>여기는 홈화면 입니다</div>
       </Route>
-      <Route path="/notice" exact>
-        <Notice />
-      </Route>
-      <Route path="/bbs" exact>
-        <Bbs />
+      <Route path="/list" exact>
+        <AuthRoute>
+          <TodoComp />
+        </AuthRoute>
       </Route>
       <Route path="/login" exact>
         <LoginForm />
@@ -43,9 +41,6 @@ function MainComp() {
       </Route>
       <Route path="/logout" exact>
         <Logout />
-      </Route>
-      <Route path="/admin" exact>
-        <Admin />
       </Route>
     </MainNav>
   );
