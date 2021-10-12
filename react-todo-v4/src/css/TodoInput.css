@@ -6,11 +6,10 @@ div.login_form {
 div.login_form input {
   width: 60%;
   height: 40px;
-  margin: 0 0 10px;
-  padding: 5px 30px 5px 20px;
-  border: 1px solid #282c34;
+  margin: 0 0 8px;
+  padding: 5px 39px 5px 11px;
+  border: 1px solid #dadada;
   background-color: #fff;
-  border-radius: 5px;
 }
 
 div.login_form button {
@@ -19,14 +18,14 @@ div.login_form button {
 
   display: block;
   width: 60%;
-  height: 40px;
-  line-height: 40px;
+  height: 49px;
+  line-height: 49px;
 
-  margin: 3px auto;
+  margin: 16px auto;
   cursor: pointer;
 
   color: #fff;
   border: none;
   border-radius: 5px;
-  background-color: rgb(98, 202, 243);
+  background-color: #03c75a;
 }

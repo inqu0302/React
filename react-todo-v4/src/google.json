@@ -1,0 +1,11 @@
+{
+  "web": {
+    "client_id": "1060745297282-t5clohr306or4to6e06hqg8r2ug4v4o0.apps.googleusercontent.com",
+    "project_id": "mytodo-328806",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_secret": "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",
+    "javascript_origins": ["http://localhost:3000"]
+  }
+}

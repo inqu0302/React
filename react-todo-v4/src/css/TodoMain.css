@@ -9,13 +9,13 @@
   font-size: 2.5rem;
   text-align: center;
   font-weight: 100;
-  background-color: rgb(98, 202, 243);
+  background-color: #22b8cf;
   color: white;
 }
 
 .form_wrapper {
   padding: 1rem;
-  border-bottom: 1px solid rgb(98, 202, 243);
+  border-bottom: 1px solid #22b8cf;
 }
 
 .list_wrapper {

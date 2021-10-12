@@ -1,14 +1,20 @@
 ul.nav {
   display: flex;
   list-style: none;
-  background-color: blue;
-  color: white;
+  background-color: rgb(98, 202, 243);
+  color: #282c34;
+  font-weight: bold;
 }
 
 ul.nav a {
   display: inline-block;
-  padding: 8px;
+  padding: 10px;
   margin: 8px;
   color: inherit;
   text-decoration: none;
+}
+
+ul.nav :hover {
+  background-color: #282c34;
+  color: #eee;
 }

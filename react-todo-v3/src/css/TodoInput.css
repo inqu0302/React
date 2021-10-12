@@ -21,7 +21,7 @@
 
   margin-left: 1rem;
 
-  background-color: #22b8cf;
+  background-color: rgb(98, 202, 243);
   border-radius: 3px;
   color: white;
   font-weight: 600;
@@ -29,5 +29,5 @@
 }
 
 .btn_insert:hover {
-  background-color: #3bc9db;
+  background-color: #282c34;
 }
